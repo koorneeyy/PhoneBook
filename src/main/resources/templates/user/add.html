@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Створення нового запису</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:include="user/header"></div>
+<form action="#" th:action="@{/user/add}" th:object="${recordPojo}" method="post">
+    <table>
+
+        <input type="text" hidden="true"  th:field="*{id}"/>
+        <tr>
+            <td>Прізвище:</td>
+            <td><input type="text" class="form-control" th:field="*{sName}"/></td>
+            <td th:if="${#fields.hasErrors('sName')}" th:errors="*{sName}" class="label label-danger"></td>
+        </tr>
+
+        <tr>
+            <td>Ім'я:</td>
+            <td><input type="text" class="form-control" th:field="*{fName}"/></td>
+            <td th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}" class="label label-danger"></td>
+        </tr>
+        <tr>
+            <td>По батькові:</td>
+            <td><input type="text" class="form-control" th:field="*{mName}"/></td>
+            <td th:if="${#fields.hasErrors('mName')}" th:errors="*{mName}" class="label label-danger"></td>
+        </tr>
+
+        <tr>
+            <td>Мобільний телефон:</td>
+            <td><input type="text" class="form-control" th:field="*{mPhone}"/></td>
+            <td th:if="${#fields.hasErrors('mPhone')}" th:errors="*{mPhone}" class="label label-danger"></td>
+        </tr>
+
+        <tr>
+            <td>Домашній телефон:</td>
+            <td><input type="text" class="form-control" th:field="*{hPhone}"/></td>
+            <td th:if="${#fields.hasErrors('hPhone')}" th:errors="*{hPhone}" class="label label-danger"></td>
+        </tr>
+
+        <tr>
+            <td>Адреса:</td>
+            <td><input type="text" class="form-control" th:field="*{adress}"/></td>
+            <td th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}" class="label label-danger"></td>
+        </tr>
+
+        <tr>
+            <td>Електронна пошта:</td>
+            <td><input type="text" class="form-control" th:field="*{mail}"/></td>
+            <td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="label label-danger"></td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <button type="submit">Ок</button>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+</body>
+</html>

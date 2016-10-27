@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Телефонна книга</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:include="user/header"></div>
+
+
+<form class="form-horizontal" th:action="@{/user/list}" method="POST">
+   <table width="90%">
+       <tr>  <td><a href="/user/add" class="btn btn-success">Створити запис</a>   </td> <td><input class="form-control" width="50%" type="text" name="keyword" placeholder="Введіть частину імені або номеру для пошуку"/>  </td>   <td><input type="submit" value="Пошук"/></td></tr>
+
+   </table>
+
+</form>
+
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Прізвище</th>
+        <th>Ім'я</th>
+        <th>По батькові</th>
+        <th>Моб. телефон</th>
+        <th>Дом. телефон</th>
+        <th>Адреса</th>
+        <th>Ел. пошта</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr th:each="record : ${allRecords}">
+        <td th:text="${record.sName}"></td>
+        <td th:text="${record.fName}"></td>
+        <td th:text="${record.mName}"></td>
+        <td th:text="${record.mPhone}"></td>
+        <td th:text="${record.hPhone}"></td>
+        <td th:text="${record.adress}"></td>
+        <td th:text="${record.mail}"></td>
+
+        <td><a class="btn btn-info" th:href="@{'/user/edit/'+${record.id}}">Оновити</a></td>
+        <td>
+            <button class="btn btn-danger" id="qwe"
+                    th:onclick="'javascript:confirmDeleteItem(\'' + ${record.id} + '\');'">Видалити
+            </button>
+        </td>
+
+    </tr>
+
+</table>
+
+
+<script th:inline="javascript">
+
+    function confirmDeleteItem(id) {
+        if (confirm('Видалити запис ?')) {
+
+            console.log("delete")
+            location.href = "/user/delete/" + id
+        } else {
+            return false;
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

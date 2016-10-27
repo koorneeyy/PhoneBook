@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+            <title> Авторизація </title>
+</head>
+<link rel="stylesheet" type="text/css" media="all"
+      th:href="@{/bootstrap.min.css}" />
+<body>
+
+<p th:if="${param.error}">
+    Bad Credentials
+</p>
+<form class="form-horizontal" th:action="@{/login}" method="POST">
+    Логін : <input class="form-control" type="text" name="j_username"/> <br/><br/>
+    Пароль: <input class="form-control" type="password" name="j_password"/> <br/><br/>
+    <input type="submit" value="Увійти"/>
+</form>
+
+
+</body>
+</html>

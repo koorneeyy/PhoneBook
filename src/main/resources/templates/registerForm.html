@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title> Реєстрація </title>
+</head>
+<link rel="stylesheet" type="text/css" media="all"
+      th:href="@{/bootstrap.min.css}" />
+<body>
+<form action="#" th:action="@{/register}" th:object="${userPojo}" method="post">
+    <table>
+        <tr>
+            <td>Логін:</td>
+            <td><input type="text" th:field="*{nameLogin}" class="form-control"/></td>
+            <td th:if="${#fields.hasErrors('nameLogin')}" th:errors="*{nameLogin}" class="label label-danger"></td>
+
+        </tr>
+        <tr>
+            <td>ПІБ:</td>
+            <td><input type="text" th:field="*{fullName}" class="form-control"/></td>
+            <td th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="label label-danger"></td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td><input type="password" th:field="*{password}" class="form-control"/></td>
+
+
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="label label-danger"></td>
+
+        </tr>
+        <tr>
+            <td><button type="submit">ОК</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

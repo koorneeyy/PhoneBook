@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" media="all"
+		    th:href="@{/bootstrap.min.css}" />
+
+</head>
+<body>
+<nav class="navbar navbar-inverse ">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/user/list"></a>
+		</div>
+		<div id="navbar">
+			<ul class="nav navbar-nav navbar-right">
+				<form class="form-horizontal" th:action="@{/appLogout}" method="POST">
+					<button type="submit">Вихід</button>
+				</form>
+
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+</body>
+</html>
